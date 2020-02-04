@@ -5,9 +5,10 @@ services:
   - xvfb
 
 rvm:
-  - 2.6.3
+  - 2.7.0
 
 env:
+  - RAILS_VERSION=6.0.2.1
   - RAILS_VERSION=6.0.0
   - RAILS_VERSION=5.2.0
 
@@ -19,7 +20,7 @@ addons:
 
 cache:
   directories:
-    - /home/travis/.rvm/gems/ruby-2.6.3
+    - /home/travis/.rvm/gems/ruby-2.7.0
 
 install: ./ci/build.sh
 
