@@ -48,7 +48,7 @@ jobs:
     script: cd rswag-ui
     if: tag IS present
     deploy:
-      gemspec: rswag-ui.gemspec
+      gemspec: openapi-rswag-ui.gemspec
       gem: openapi-rswag-ui
       provider: rubygems
       api_key:
