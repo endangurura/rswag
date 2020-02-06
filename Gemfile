@@ -20,8 +20,8 @@ when  '6'
   gem 'sqlite3', '~> 1.4.1'
 end
 
-gem 'rswag-api', path: './rswag-api'
-gem 'rswag-ui', path: './rswag-ui'
+gem 'openapi-rswag-api', path: './rswag-api'
+gem 'openapi-rswag-ui', path: './rswag-ui'
 
 group :test do
   gem 'test-unit'
@@ -29,7 +29,7 @@ group :test do
   gem 'generator_spec'
   gem 'capybara'
   gem 'capybara-webkit'
-  gem 'rswag-specs', path: './rswag-specs'
+  gem 'openapi-rswag-specs', path: './rswag-specs'
 end
 
 group :assets do

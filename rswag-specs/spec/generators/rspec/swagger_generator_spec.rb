@@ -18,7 +18,7 @@ module Rspec
     end
 
     it 'installs the swagger_helper for rspec' do
-      allow_any_instance_of(Rswag::RouteParser).to receive(:routes).and_return(fake_routes)
+      allow_any_instance_of(Openapi::Rswag::RouteParser).to receive(:routes).and_return(fake_routes)
       run_generator ['Posts::CommentsController']
 
       assert_file('spec/requests/posts/comments_spec.rb') do |content|

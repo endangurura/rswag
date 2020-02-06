@@ -11,10 +11,10 @@ namespace :rswag do
       )
 
       # NOTE: rspec 2.x support
-      if Rswag::Specs::RSPEC_VERSION > 2 && Rswag::Specs.config.swagger_dry_run
-        t.rspec_opts = [ '--format Rswag::Specs::SwaggerFormatter', '--dry-run', '--order defined' ]
+      if Openapi::Rswag::Specs::RSPEC_VERSION > 2 && Openapi::Rswag::Specs.config.swagger_dry_run
+        t.rspec_opts = [ '--format Openapi::Rswag::Specs::SwaggerFormatter', '--dry-run', '--order defined' ]
       else
-        t.rspec_opts = [ '--format Rswag::Specs::SwaggerFormatter', '--order defined' ]
+        t.rspec_opts = [ '--format Openapi::Rswag::Specs::SwaggerFormatter', '--order defined' ]
       end
     end
   end

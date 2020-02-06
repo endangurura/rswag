@@ -2,7 +2,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "ruby-openapi-specs"
+  s.name        = "openapi-rswag-specs"
   s.version     = ENV['TRAVIS_TAG'] || '0.0.0'
   s.authors     = ["Emmanuel Ndangurura"]
   s.email       = ["endangurura@gmail.com"]

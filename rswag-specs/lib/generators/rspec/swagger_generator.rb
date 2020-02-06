@@ -1,4 +1,4 @@
-require 'rswag/route_parser'
+require 'openapi/rswag/route_parser'
 require 'rails/generators'
 
 module Rspec
@@ -6,7 +6,7 @@ module Rspec
     source_root File.expand_path('../templates', __FILE__)
 
     def setup
-      @routes = Rswag::RouteParser.new(controller_path).routes
+      @routes = Openapi::Rswag::RouteParser.new(controller_path).routes
     end
 
     def create_spec_file
