@@ -1,74 +1,71 @@
 language: ruby
-
 dist: bionic
 services:
-  - xvfb
-
+- xvfb
 rvm:
-  - 2.7.0
-
+- 2.7.0
 env:
-  - RAILS_VERSION=6.0.2.1
-  - RAILS_VERSION=6.0.0
-  - RAILS_VERSION=5.2.0
-
+- RAILS_VERSION=6.0.2.1
+- RAILS_VERSION=6.0.0
+- RAILS_VERSION=5.2.0
 addons:
   apt:
     packages:
-      - libqtwebkit-dev
-      - libqtwebkit4
-
+    - libqtwebkit-dev
+    - libqtwebkit4
 cache:
   directories:
-    - /home/travis/.rvm/gems/ruby-2.7.0
-
-install: ./ci/build.sh
-
-script: ./ci/test.sh
-
+  - "/home/travis/.rvm/gems/ruby-2.7.0"
+install: "./ci/build.sh"
+script: "./ci/test.sh"
 jobs:
   include:
-    - stage: publish components
-      script: 'cd rswag-api'
-      if: tag IS present
-      deploy:
-        gemspec: rswag-api.gemspec
-        provider: rubygems
-        api_key: $RUBYGEMS_API_KEY
-        on:
-          branch: master
-          tags: true
-
-    - stage: publish components
-      script: 'cd rswag-specs'
-      if: tag IS present
-      deploy:
-        gemspec: rswag-specs.gemspec
-        provider: rubygems
-        api_key: $RUBYGEMS_API_KEY
-        on:
-          branch: master
-          tags: true
-
-    - stage: publish components
-      script: 'cd rswag-ui'
-      if: tag IS present
-      deploy:
-        gemspec: rswag-ui.gemspec
-        provider: rubygems
-        api_key: $RUBYGEMS_API_KEY
-        skip_cleanup: true
-        on:
-          branch: master
-          tags: true
-
-    - stage: publish rswag
-      script: 'cd rswag'
-      if: tag IS present
-      deploy:
-        gemspec: rswag.gemspec
-        provider: rubygems
-        api_key: $RUBYGEMS_API_KEY
-        on:
-          branch: master
-          tags: true
+  - stage: publish components
+    script: cd rswag-api
+    if: tag IS present
+    deploy:
+      gemspec: rswag-api.gemspec
+      provider: rubygems
+      api_key: "$RUBYGEMS_API_KEY"
+      on:
+        branch: master
+        tags: true
+  - stage: publish components
+    script: cd rswag-specs
+    if: tag IS present
+    deploy:
+      gemspec: rswag-specs.gemspec
+      provider: rubygems
+      api_key: "$RUBYGEMS_API_KEY"
+      on:
+        branch: master
+        tags: true
+  - stage: publish components
+    script: cd rswag-ui
+    if: tag IS present
+    deploy:
+      gemspec: rswag-ui.gemspec
+      provider: rubygems
+      api_key: "$RUBYGEMS_API_KEY"
+      skip_cleanup: true
+      on:
+        branch: master
+        tags: true
+  - stage: publish rswag
+    script: cd rswag
+    if: tag IS present
+    deploy:
+      gemspec: rswag.gemspec
+      provider: rubygems
+      api_key: "$RUBYGEMS_API_KEY"
+      on:
+        branch: master
+        tags: true
+deploy:
+  provider: rubygems
+  api_key:
+    secure: gFp7dUSI1YJA/yBu47AvELjBTykW57fGUMSRZtjKfYW4fenR+XWy4dFRwXjEGSNrVUFZ8g42z4lz6fRHw/McrPQzfWUGjnIZ8sZ871ajFGAjKx8B2pYbI7Pmrf7ETjFrr0qAtkWXizavWYePfLJ+6crJTeG+ksFpGDtwVS3IZ9dty/h4n7rSQ4WdzTQjds1lZ9iOMVDKerFNyIYjmuHQufsX+JyS6XPfu0MiAHbCGAtkbRlZDgTQ0XTe7QEstAJDRfQAqA8luNSKwa4AlZVsnT1oIBDSAYyHqD7tdmYT6YoxpSQRwhuR6cPG5F42GbsBdN+qMJSMnLbkqFCbmvh8i4rK1cfKmW8SRCDlinOiebsDI8ZCDB0LOYX81Ys0I7mSvuHkc2UWsua+zE+AK8KIVILeLKzytERSRZrBzUMujoxkIqOS3x/FKklMP6UTkZfLWM6E4vwV9nfDybU+sB2ib0YgF0rHQNLyGLTjirAtHWO97rapfpejofpGhrlm6V7UUrjOQkhwGfEpfPe4A+f2QD/LJP6GTIc/D0IoislpPoVyBKAhhrSmWCX/BqQUDVbDWPR5cFnZze/KEIwqDFYTuxRcRvJEOag1S2ZCNcORhl7h3pnOUSryZ2Eq2YsLZdAxXQBMpMsOoQSZGhHZ8WA2SW61mYCilouOOdDXT1IT8b0=
+  gem: ruby-openapi
+  on:
+    tags: true
+    repo: endangurura/rswag
